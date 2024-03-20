@@ -11,7 +11,6 @@ import { readFileSync } from "fs";
 import {
   HtmlTagObject,
   SubresourceIntegrityPluginResolvedOptions,
-  StronglyConnectedComponent,
   AssetType,
   TemplateFiles,
   HWPAssets,

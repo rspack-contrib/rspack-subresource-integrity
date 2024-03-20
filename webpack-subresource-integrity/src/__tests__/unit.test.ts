@@ -9,7 +9,6 @@ import { resolve } from "path";
 import webpack, { Compiler, Compilation, Configuration, Chunk } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { SubresourceIntegrityPlugin } from "..";
-import type { SubresourceIntegrityPluginOptions } from "..";
 import { assert } from "../util";
 
 jest.unmock("html-webpack-plugin");
