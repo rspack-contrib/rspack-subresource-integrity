@@ -33,8 +33,7 @@
     "node": ">= 12"
   },
   "peerDependencies": {
-    "html-webpack-plugin": ">= 5.0.0-beta.1 < 6",
-    "webpack": "^5.12.0"
+    "html-webpack-plugin": ">= 5.0.0-beta.1 < 6"
   },
   "peerDependenciesMeta": {
     "html-webpack-plugin": {
