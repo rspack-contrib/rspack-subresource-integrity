@@ -117,19 +117,6 @@ more information."
     );
   }
 
-  public errorInvalidHashLoading(
-    hashLoading: string,
-    supportedHashLoadingOptions: readonly string[]
-  ): void {
-    const optionsStr = supportedHashLoadingOptions
-      .map((opt) => `'${opt}'`)
-      .join(", ");
-
-    this.error(
-      `options.hashLoading must be one of ${optionsStr}, instead got '${hashLoading}'`
-    );
-  }
-
   public warnCrossOriginPolicy(): void {
     this.warnOnce(
       'SRI requires a cross-origin policy, defaulting to "anonymous". ' +

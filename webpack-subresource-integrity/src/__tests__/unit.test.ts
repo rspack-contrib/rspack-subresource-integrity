@@ -188,26 +188,6 @@ test("errors if hash function names contains unsupported digest", async () => {
   );
 });
 
-test("errors if hashLoading option uses unknown value", async () => {
-  const plugin = new SubresourceIntegrityPlugin({
-    hashLoading:
-      "invalid" as unknown as SubresourceIntegrityPluginOptions["hashLoading"],
-  });
-
-  const compilation = await runCompilation(
-    webpack({
-      ...defaultOptions,
-      plugins: [plugin, disableOutputPlugin],
-    })
-  );
-
-  expect(compilation.errors.length).toBe(1);
-  expect(compilation.warnings.length).toBe(0);
-  expect(compilation.errors[0]?.message).toMatch(
-    /options.hashLoading must be one of 'eager', 'lazy', instead got 'invalid'/
-  );
-});
-
 test("uses default options", async () => {
   const plugin = new SubresourceIntegrityPlugin({
     hashFuncNames: ["sha256"],

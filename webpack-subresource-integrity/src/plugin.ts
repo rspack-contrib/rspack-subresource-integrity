@@ -33,7 +33,6 @@ import {
   replaceInSource,
   usesAnyHash,
 } from "./util";
-import { getChunkToManifestMap } from "./manifest";
 import { AssetIntegrity } from "./integrity";
 
 const assetTypeIntegrityKeys: [AssetType, WSIHWPAssetsIntegrityKey][] = [
@@ -66,21 +65,6 @@ export class Plugin {
    * @internal
    */
   private hwpPublicPath: string | null = null;
-
-  /**
-   * @internal
-   */
-  private sortedSccChunks: StronglyConnectedComponent<Chunk>[] = [];
-
-  /**
-   * @internal
-   */
-  private chunkManifest: Map<Chunk, Set<Chunk>> = new Map<Chunk, Set<Chunk>>();
-
-  /**
-   * @internal
-   */
-  private hashByPlaceholder = new Map<string, string>();
 
   public constructor(
     compilation: Compilation,
@@ -159,6 +143,8 @@ export class Plugin {
     childChunk: Chunk,
     assets: Record<string, sources.Source>
   ) => {
+    const hashByPlaceholder = new Map<string, string>();
+
     Array.from(childChunk.files).forEach((sourcePath) => {
       const asset = assets[sourcePath];
       if (asset) {
@@ -166,7 +152,7 @@ export class Plugin {
         const newAsset = this.replaceAsset(
           this.compilation.compiler,
           assets,
-          this.hashByPlaceholder,
+          hashByPlaceholder,
           sourcePath
         );
         const integrity = this.assetIntegrity.updateFromSource(
@@ -175,7 +161,7 @@ export class Plugin {
         );
 
         if (childChunk.id !== null) {
-          this.hashByPlaceholder.set(
+          hashByPlaceholder.set(
             makePlaceholder(this.options.hashFuncNames, childChunk.id),
             integrity
           );
@@ -216,19 +202,11 @@ export class Plugin {
    * @internal
    */
   processAssets = (assets: Record<string, sources.Source>): void => {
-    if (this.options.hashLoading === "lazy") {
-      for (const scc of this.sortedSccChunks) {
-        for (const chunk of scc.nodes) {
-          this.processChunkAssets(chunk, assets);
-        }
-      }
-    } else {
-      Array.from(this.compilation.chunks)
-        .filter((chunk) => chunk.hasRuntime())
-        .forEach((chunk) => {
-          this.processChunk(chunk, assets);
-        });
-    }
+    Array.from(this.compilation.chunks)
+      .filter((chunk) => chunk.hasRuntime())
+      .forEach((chunk) => {
+        this.processChunk(chunk, assets);
+      });
 
     this.addMissingIntegrityHashes(assets);
   };
@@ -289,24 +267,6 @@ export class Plugin {
       this.compilation.compiler.options.output.crossOriginLoading ||
       "anonymous";
   };
-
-  /**
-   * @internal
-   */
-  beforeRuntimeRequirements = (): void => {
-    if (this.options.hashLoading === "lazy") {
-      const [sortedSccChunks, chunkManifest] = getChunkToManifestMap(
-        this.compilation.chunks
-      );
-      this.sortedSccChunks = sortedSccChunks;
-      this.chunkManifest = chunkManifest;
-    }
-    this.hashByPlaceholder.clear();
-  };
-
-  getChildChunksToAddToChunkManifest(chunk: Chunk): Set<Chunk> {
-    return this.chunkManifest.get(chunk) ?? new Set<Chunk>();
-  }
 
   handleHwpPluginArgs = ({ assets }: { assets: HWPAssets }): void => {
     this.hwpPublicPath = assets.publicPath;

@@ -22,7 +22,6 @@ import {
   sriHashVariableReference,
 } from "./util";
 import { install } from "./hooks";
-import { AddLazySriRuntimeModule } from "./manifest";
 import { thisPluginName, standardHashFuncNames } from "./globals";
 
 /**
@@ -53,7 +52,6 @@ export class SubresourceIntegrityPlugin {
     this.options = {
       hashFuncNames: ["sha384"],
       enabled: "auto",
-      hashLoading: "eager",
       ...options,
     };
   }
@@ -94,10 +92,6 @@ export class SubresourceIntegrityPlugin {
       reporter.warnNonWeb();
       return;
     }
-
-    compilation.hooks.beforeRuntimeRequirements.tap(thisPluginName, () => {
-      plugin.beforeRuntimeRequirements();
-    });
 
     compilation.hooks.processAssets.tap(
       {
@@ -164,10 +158,7 @@ export class SubresourceIntegrityPlugin {
     );
 
     mainTemplate.hooks.localVars.tap(thisPluginName, (source, chunk) => {
-      const allChunks =
-        this.options.hashLoading === "lazy"
-          ? plugin.getChildChunksToAddToChunkManifest(chunk)
-          : findChunks(chunk);
+      const allChunks = findChunks(chunk);
       const includedChunks = chunk.getChunkMaps(false).hash;
 
       if (Object.keys(includedChunks).length > 0) {
@@ -190,27 +181,6 @@ export class SubresourceIntegrityPlugin {
 
       return source;
     });
-
-    if (this.options.hashLoading === "lazy") {
-      compilation.hooks.additionalChunkRuntimeRequirements.tap(
-        thisPluginName,
-        (chunk) => {
-          const childChunks = plugin.getChildChunksToAddToChunkManifest(chunk);
-          if (childChunks.size > 0 && !chunk.hasRuntime()) {
-            compilation.addRuntimeModule(
-              chunk,
-              new AddLazySriRuntimeModule(
-                generateSriHashPlaceholders(
-                  childChunks,
-                  this.options.hashFuncNames
-                ),
-                chunk.name ?? chunk.id
-              )
-            );
-          }
-        }
-      );
-    }
   };
 
   /**
@@ -224,7 +194,7 @@ export class SubresourceIntegrityPlugin {
       reporter.warnCrossOriginPolicy();
     }
     return (
-      this.validateHashFuncNames(reporter) && this.validateHashLoading(reporter)
+      this.validateHashFuncNames(reporter)
     );
   };
 
@@ -248,22 +218,6 @@ export class SubresourceIntegrityPlugin {
       this.warnStandardHashFunc(reporter);
       return true;
     }
-  };
-
-  /**
-   * @internal
-   */
-  private validateHashLoading = (reporter: Reporter): boolean => {
-    const supportedHashLoadingOptions = Object.freeze(["eager", "lazy"]);
-    if (supportedHashLoadingOptions.includes(this.options.hashLoading)) {
-      return true;
-    }
-
-    reporter.errorInvalidHashLoading(
-      this.options.hashLoading,
-      supportedHashLoadingOptions
-    );
-    return false;
   };
 
   /**

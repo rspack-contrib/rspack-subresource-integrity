@@ -124,43 +124,6 @@ export function generateSriHashPlaceholders(
   }, {} as { [key: string]: string });
 }
 
-function allSetsHave<T>(sets: Iterable<Set<T>>, item: T) {
-  for (const set of sets) {
-    if (!set.has(item)) {
-      return false;
-    }
-  }
-  return true;
-}
-
-export function* intersect<T>(sets: Iterable<Set<T>>): Generator<T> {
-  const { value: initialSet } = sets[Symbol.iterator]().next();
-  if (!initialSet) {
-    return;
-  }
-
-  initialSetLoop: for (const item of initialSet) {
-    if (!allSetsHave(sets, item)) {
-      continue initialSetLoop;
-    }
-    yield item;
-  }
-}
-
-export function intersectSets<T>(setsToIntersect: Iterable<Set<T>>): Set<T> {
-  return new Set<T>(intersect(setsToIntersect));
-}
-
-export function unionSet<T>(...sets: Iterable<T>[]): Set<T> {
-  const result = new Set<T>();
-  for (const set of sets) {
-    for (const item of set) {
-      result.add(item);
-    }
-  }
-  return result;
-}
-
 export function* map<T, TResult>(
   items: Iterable<T>,
   fn: (item: T) => TResult
@@ -186,29 +149,6 @@ export function* allChunksInGroupIterable(
 ): Generator<Chunk> {
   for (const childGroup of chunkGroup.childrenIterable) {
     for (const childChunk of childGroup.chunks) {
-      yield childChunk;
-    }
-  }
-}
-
-export function* allChunksInChunkIterable(chunk: Chunk): Generator<Chunk> {
-  for (const group of chunk.groupsIterable) {
-    for (const childChunk of allChunksInGroupIterable(group)) {
-      yield childChunk;
-    }
-  }
-}
-
-export function* allChunksInPrimaryChunkIterable(
-  chunk: Chunk
-): Generator<Chunk> {
-  for (const chunkGroup of chunk.groupsIterable) {
-    if (chunkGroup.chunks[chunkGroup.chunks.length - 1] !== chunk) {
-      // Only add sri hashes for one chunk per chunk group,
-      // where the last chunk in the group is the primary chunk
-      continue;
-    }
-    for (const childChunk of allChunksInGroupIterable(chunkGroup)) {
       yield childChunk;
     }
   }
