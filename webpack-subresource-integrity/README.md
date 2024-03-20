@@ -3,7 +3,7 @@
 [![Code Climate][codeclimate-badge]][codeclimate-url]
 [![License][license-badge]][license-url]
 
-# webpack-subresource-integrity
+# rspack-subresource-integrity
 
 Webpack plugin for enabling Subresource Integrity.
 
@@ -23,20 +23,20 @@ manipulation.
 ## Installation
 
 ```shell
-yarn add --dev webpack-subresource-integrity
+yarn add --dev rspack-subresource-integrity
 ```
 
 ```shell
-npm install webpack-subresource-integrity --save-dev
+npm install rspack-subresource-integrity --save-dev
 ```
 
-### Recommended Webpack Configuration
+### Recommended Rspack Configuration
 
 ```javascript
-import { SubresourceIntegrityPlugin } from "webpack-subresource-integrity";
-// or: const { SubresourceIntegrityPlugin } = require('webpack-subresource-integrity');
+import { SubresourceIntegrityPlugin } from "rspack-subresource-integrity";
+// or: const { SubresourceIntegrityPlugin } = require('rspack-subresource-integrity');
 
-const compiler = webpack({
+const compiler = rspack({
   output: {
     // the following setting is required for SRI to work:
     crossOriginLoading: "anonymous",

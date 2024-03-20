@@ -1,4 +1,4 @@
-# webpack-subresource-integrity
+# rspack-subresource-integrity
 
 [![npm version][npm-badge]][npm-url]
 [![Build Status][tests-badge]][tests-url]

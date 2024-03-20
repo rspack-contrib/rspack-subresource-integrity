@@ -1,4 +1,4 @@
-const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
+const { SubresourceIntegrityPlugin } = require("rspack-subresource-integrity");
 const expect = require("expect");
 const ChunkRenderError = require("webpack/lib/ChunkRenderError");
 

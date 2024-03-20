@@ -78,7 +78,7 @@ export class Reporter {
 
   public warnHotReloading(): void {
     this.warnOnce(
-      "webpack-subresource-integrity may interfere with hot reloading. " +
+      "rspack-subresource-integrity may interfere with hot reloading. " +
         "Consider disabling this plugin in development mode."
     );
   }

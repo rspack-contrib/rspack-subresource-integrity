@@ -1,4 +1,4 @@
-const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
+const { SubresourceIntegrityPlugin } = require("rspack-subresource-integrity");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackAssetsManifest = require("webpack-assets-manifest");
 const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");

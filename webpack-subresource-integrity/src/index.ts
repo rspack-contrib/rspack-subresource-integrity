@@ -30,7 +30,7 @@ import { thisPluginName, standardHashFuncNames } from "./globals";
 export { SubresourceIntegrityPluginOptions };
 
 /**
- * The webpack-subresource-integrity plugin.
+ * The rspack-subresource-integrity plugin.
  *
  * @public
  */
@@ -45,7 +45,7 @@ export class SubresourceIntegrityPlugin {
   constructor(options: SubresourceIntegrityPluginOptions = {}) {
     if (typeof (options as unknown) !== "object") {
       throw new Error(
-        "webpack-subresource-integrity: argument must be an object"
+        "rspack-subresource-integrity: argument must be an object"
       );
     }
 
