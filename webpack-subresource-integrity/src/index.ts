@@ -193,9 +193,7 @@ export class SubresourceIntegrityPlugin {
     ) {
       reporter.warnCrossOriginPolicy();
     }
-    return (
-      this.validateHashFuncNames(reporter)
-    );
+    return this.validateHashFuncNames(reporter);
   };
 
   /**
