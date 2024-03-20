@@ -5,6 +5,21 @@
 [![Coverage Status][coverage-badge]][coverage-url]
 [![License][license-badge]][license-url]
 
+---
+
+## Notice
+
+This plugin is forked from [waysact/webpack-subresource-integrity](https://github.com/waysact/webpack-subresource-integrity).
+
+The function of this plugin is basically the same as [waysact/webpack-subresource-integrity](https://github.com/waysact/webpack-subresource-integrity). And this plugin can be used with both Rspack and Webpack 5.
+
+Change list:
+
+- Removed the hashLoading option, as Rspack does not support `compilation.hooks.beforeRuntimeRequirements`. See: [rspack#4381](https://github.com/web-infra-dev/rspack/issues/4381)
+- Remove `webpack` peer dependency
+
+---
+
 If you're looking for **installation and usage instructions**, visit the [main package](https://github.com/waysact/webpack-subresource-integrity/blob/main/webpack-subresource-integrity/#readme).
 
 Or you might be looking for the 1.x version with **support for Webpack 1-4 and older versions of html-webpack-plugin**? Visit the [1.x branch](https://github.com/waysact/webpack-subresource-integrity/tree/1.x/#readme).
