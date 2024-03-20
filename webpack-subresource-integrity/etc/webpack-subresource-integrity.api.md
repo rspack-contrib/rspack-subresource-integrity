@@ -19,8 +19,6 @@ export interface SubresourceIntegrityPluginOptions {
     readonly enabled?: "auto" | true | false;
     // (undocumented)
     readonly hashFuncNames?: [string, ...string[]];
-    // (undocumented)
-    readonly hashLoading?: "eager" | "lazy";
 }
 
 // (No @packageDocumentation comment for this package)
