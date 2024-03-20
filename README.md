@@ -15,7 +15,8 @@ The function of this plugin is basically the same as [waysact/webpack-subresourc
 
 Change list:
 
-- Removed the hashLoading option, as Rspack does not support `compilation.hooks.beforeRuntimeRequirements`. See: [rspack#4381](https://github.com/web-infra-dev/rspack/issues/4381)
+- Rename package to `rspack-subresource-integrity`
+- Removed the `hashLoading` option, as Rspack does not support `compilation.hooks.beforeRuntimeRequirements`. See: [rspack#4381](https://github.com/web-infra-dev/rspack/issues/4381)
 - Remove `webpack` peer dependency
 
 ---
