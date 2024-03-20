@@ -6332,62 +6332,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"lazy-hashes-cycles@workspace:examples/lazy-hashes-cycles":
-  version: 0.0.0-use.local
-  resolution: "lazy-hashes-cycles@workspace:examples/lazy-hashes-cycles"
-  dependencies:
-    expect: ^26.6.2
-    html-webpack-plugin: ">= 5.0.0-beta.1"
-    nyc: "*"
-    webpack: ^5.44.0
-    webpack-cli: 4
-    webpack-subresource-integrity: "*"
-    wsi-test-helper: "*"
-  languageName: unknown
-  linkType: soft
-
-"lazy-hashes-group@workspace:examples/lazy-hashes-group":
-  version: 0.0.0-use.local
-  resolution: "lazy-hashes-group@workspace:examples/lazy-hashes-group"
-  dependencies:
-    expect: ^26.6.2
-    html-webpack-plugin: ">= 5.0.0-beta.1"
-    nyc: "*"
-    webpack: ^5.44.0
-    webpack-cli: 4
-    webpack-subresource-integrity: "*"
-    wsi-test-helper: "*"
-  languageName: unknown
-  linkType: soft
-
-"lazy-hashes-multiple-parents@workspace:examples/lazy-hashes-multiple-parents":
-  version: 0.0.0-use.local
-  resolution: "lazy-hashes-multiple-parents@workspace:examples/lazy-hashes-multiple-parents"
-  dependencies:
-    expect: ^26.6.2
-    html-webpack-plugin: ">= 5.0.0-beta.1"
-    nyc: "*"
-    webpack: ^5.44.0
-    webpack-cli: 4
-    webpack-subresource-integrity: "*"
-    wsi-test-helper: "*"
-  languageName: unknown
-  linkType: soft
-
-"lazy-hashes-simple@workspace:examples/lazy-hashes-simple":
-  version: 0.0.0-use.local
-  resolution: "lazy-hashes-simple@workspace:examples/lazy-hashes-simple"
-  dependencies:
-    expect: ^26.6.2
-    html-webpack-plugin: ">= 5.0.0-beta.1"
-    nyc: "*"
-    webpack: ^5.44.0
-    webpack-cli: 4
-    webpack-subresource-integrity: "*"
-    wsi-test-helper: "*"
-  languageName: unknown
-  linkType: soft
-
 "lazy-modified@workspace:examples/lazy-modified":
   version: 0.0.0-use.local
   resolution: "lazy-modified@workspace:examples/lazy-modified"
@@ -9632,7 +9576,6 @@ __metadata:
   resolution: "webpack-subresource-integrity@portal:webpack-subresource-integrity::locator=root-workspace-0b6124%40workspace%3A."
   peerDependencies:
     html-webpack-plugin: ">= 5.0.0-beta.1 < 6"
-    webpack: ^5.12.0
   peerDependenciesMeta:
     html-webpack-plugin:
       optional: true
@@ -9666,7 +9609,6 @@ __metadata:
     webpack: ^5.44.0
   peerDependencies:
     html-webpack-plugin: ">= 5.0.0-beta.1 < 6"
-    webpack: ^5.12.0
   peerDependenciesMeta:
     html-webpack-plugin:
       optional: true
