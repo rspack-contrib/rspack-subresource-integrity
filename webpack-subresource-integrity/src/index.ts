@@ -255,6 +255,6 @@ export class SubresourceIntegrityPlugin {
   };
 
   apply(compiler: Compiler): void {
-    install(compiler, this.setup);
+    install(compiler, this.setup, this.options.HtmlPlugin);
   }
 }
