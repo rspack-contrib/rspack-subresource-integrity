@@ -59,13 +59,16 @@ export function install(
   callback: (
     compilation: Compilation,
     hwpHooks: ReturnType<getHtmlWebpackPluginHooksType> | null
-  ) => void
+  ) => void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  HtmlPlugin?: any
 ): void {
   let getHtmlWebpackPluginHooks: getHtmlWebpackPluginHooksType | null = null;
   compiler.hooks.beforeCompile.tapPromise(thisPluginName, async () => {
     try {
-      getHtmlWebpackPluginHooks = (await import("html-webpack-plugin")).default
-        .getHooks;
+      getHtmlWebpackPluginHooks = (
+        HtmlPlugin || (await import("html-webpack-plugin")).default
+      ).getHooks;
     } catch (e) {
       if (!isErrorWithCode(e) || e.code !== "MODULE_NOT_FOUND") {
         throw e;

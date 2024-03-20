@@ -12,10 +12,15 @@ export type getHtmlWebpackPluginHooksType = (
 export interface SubresourceIntegrityPluginOptions {
   readonly hashFuncNames?: [string, ...string[]];
   readonly enabled?: "auto" | true | false;
+  readonly HtmlPlugin?: unknown;
 }
 
 export type SubresourceIntegrityPluginResolvedOptions =
-  Required<SubresourceIntegrityPluginOptions>;
+  SubresourceIntegrityPluginOptions &
+    Pick<
+      Required<SubresourceIntegrityPluginOptions>,
+      "enabled" | "hashFuncNames"
+    >;
 
 export interface Graph<T> {
   vertices: Set<T>;

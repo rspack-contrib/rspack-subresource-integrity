@@ -18,6 +18,7 @@ Change list:
 - Rename package to `rspack-subresource-integrity`
 - Removed the `hashLoading` option, as Rspack does not support `compilation.hooks.beforeRuntimeRequirements`. See: [rspack#4381](https://github.com/web-infra-dev/rspack/issues/4381)
 - Remove `webpack` peer dependency
+- Add `HtmlPlugin` option to allow the use of the `html-rspack-plugin`.
 
 ---
 

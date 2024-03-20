@@ -19,6 +19,8 @@ export interface SubresourceIntegrityPluginOptions {
     readonly enabled?: "auto" | true | false;
     // (undocumented)
     readonly hashFuncNames?: [string, ...string[]];
+    // (undocumented)
+    readonly HtmlPlugin?: unknown;
 }
 
 // (No @packageDocumentation comment for this package)
