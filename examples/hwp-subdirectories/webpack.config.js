@@ -1,4 +1,4 @@
-const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
+const { SubresourceIntegrityPlugin } = require("rspack-subresource-integrity");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const expect = require("expect");
 const htmlparser2 = require("htmlparser2");

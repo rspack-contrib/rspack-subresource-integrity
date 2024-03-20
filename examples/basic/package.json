@@ -7,8 +7,8 @@
   "devDependencies": {
     "expect": "^26.6.2",
     "nyc": "*",
+    "rspack-subresource-integrity": "*",
     "webpack": "^5.44.0",
-    "webpack-cli": "4",
-    "webpack-subresource-integrity": "*"
+    "webpack-cli": "4"
   }
 }

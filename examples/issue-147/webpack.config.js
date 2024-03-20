@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
-const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
+const { SubresourceIntegrityPlugin } = require("rspack-subresource-integrity");
 
 module.exports = () => ({
   entry: {

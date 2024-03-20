@@ -1,10 +1,10 @@
 {
-  "name": "webpack-subresource-integrity",
-  "version": "5.2.0-rc.1",
-  "description": "Webpack plugin for enabling Subresource Integrity",
+  "name": "rspack-subresource-integrity",
+  "version": "5.2.0-beta.0",
+  "description": "Rspack plugin for enabling Subresource Integrity",
   "author": "Julian Scheid <julian@evergiving.com>",
   "license": "MIT",
-  "homepage": "https://github.com/waysact/webpack-subresource-integrity/tree/main/webpack-subresource-integrity#readme",
+  "homepage": "https://github.com/waysact/webpack-subresource-integrity/tree/main/rspack-subresource-integrity#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/waysact/webpack-subresource-integrity.git"
@@ -28,7 +28,7 @@
       "require": "./dist/cjs/index.js"
     }
   },
-  "types": "./dist/webpack-subresource-integrity-public.d.ts",
+  "types": "./dist/rspack-subresource-integrity-public.d.ts",
   "engines": {
     "node": ">= 12"
   },

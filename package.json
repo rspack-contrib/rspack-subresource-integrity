@@ -7,7 +7,7 @@
     "examples/*"
   ],
   "resolutions": {
-    "webpack-subresource-integrity": "portal:webpack-subresource-integrity",
+    "rspack-subresource-integrity": "portal:webpack-subresource-integrity",
     "wsi-test-helper": "portal:wsi-test-helper"
   },
   "scripts": {

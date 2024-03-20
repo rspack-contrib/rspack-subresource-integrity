@@ -7,9 +7,9 @@
   "devDependencies": {
     "html-webpack-plugin": ">= 5.0.0-beta.1",
     "nyc": "*",
+    "rspack-subresource-integrity": "*",
     "webpack": "^5.44.0",
     "webpack-cli": "4",
-    "webpack-subresource-integrity": "*",
     "wsi-test-helper": "*"
   }
 }

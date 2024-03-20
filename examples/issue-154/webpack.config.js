@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { SubresourceIntegrityPlugin } = require("webpack-subresource-integrity");
+const { SubresourceIntegrityPlugin } = require("rspack-subresource-integrity");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const expect = require("expect");
 const { RunInPuppeteerPlugin } = require("wsi-test-helper");
