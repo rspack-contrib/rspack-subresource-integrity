@@ -133,17 +133,19 @@ export class Plugin {
     chunk: Chunk,
     assets: Record<string, sources.Source>
   ): void => {
+    const hashByPlaceholder = new Map<string, string>();
     Array.from(findChunks(chunk))
       .reverse()
-      .forEach((chunk) => this.processChunkAssets(chunk, assets));
+      .forEach((chunk) =>
+        this.processChunkAssets(chunk, assets, hashByPlaceholder)
+      );
   };
 
   private processChunkAssets = (
     childChunk: Chunk,
-    assets: Record<string, sources.Source>
+    assets: Record<string, sources.Source>,
+    hashByPlaceholder: Map<string, string>
   ) => {
-    const hashByPlaceholder = new Map<string, string>();
-
     Array.from(childChunk.files).forEach((sourcePath) => {
       const asset = assets[sourcePath];
       if (asset) {
