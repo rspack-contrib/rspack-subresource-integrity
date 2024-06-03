@@ -1,0 +1,24 @@
+{
+  "name": "rsbuild",
+  "description": "Test case for Rsbuild",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.7.2",
+    "@rsbuild/plugin-react": "^0.7.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "rspack-subresource-integrity": "*",
+    "typescript": "^5.4.2"
+  }
+}
